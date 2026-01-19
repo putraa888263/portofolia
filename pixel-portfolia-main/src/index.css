@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   PIXEL ART RETRO PORTFOLIO - DESIGN SYSTEM
+   Tema: Retro Gaming / Cyberpunk / 8-bit
+   ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap');
+
+@layer base {
+  :root {
+    /* === WARNA UTAMA === */
+    --background: 220 20% 8%; /* Dark blue-black */
+    --foreground: 120 100% 50%; /* Neon green text */
+
+    --card: 220 25% 12%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 120 100% 50%;
+
+    /* Neon Green Primary */
+    --primary: 120 100% 50%;
+    --primary-foreground: 220 20% 8%;
+
+    /* Neon Purple Secondary */
+    --secondary: 280 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Neon Cyan Accent */
+    --accent: 185 100% 50%;
+    --accent-foreground: 220 20% 8%;
+
+    /* Muted Colors */
+    --muted: 220 15% 20%;
+    --muted-foreground: 120 40% 60%;
+
+    /* Destructive - Pixel Red */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 120 100% 30%;
+    --input: 220 25% 15%;
+    --ring: 120 100% 50%;
+
+    --radius: 0px; /* Pixel perfect - no rounded corners */
+
+    /* === WARNA PIXEL KHUSUS === */
+    --pixel-green: 120 100% 50%;
+    --pixel-purple: 280 100% 50%;
+    --pixel-cyan: 185 100% 50%;
+    --pixel-pink: 320 100% 60%;
+    --pixel-yellow: 50 100% 50%;
+    --pixel-orange: 30 100% 50%;
+    --pixel-dark: 220 20% 8%;
+    --pixel-darker: 220 25% 5%;
+
+    /* === GRADIENTS === */
+    --gradient-neon: linear-gradient(135deg, hsl(120 100% 50%) 0%, hsl(185 100% 50%) 50%, hsl(280 100% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 25% 12%) 0%, hsl(220 20% 8%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(120 100% 50% / 0.2) 0%, transparent 70%);
+
+    /* === SHADOWS (Pixel Style) === */
+    --shadow-pixel: 4px 4px 0px hsl(120 100% 30%);
+    --shadow-pixel-hover: 6px 6px 0px hsl(185 100% 40%);
+    --shadow-glow: 0 0 20px hsl(120 100% 50% / 0.5), 0 0 40px hsl(120 100% 50% / 0.3);
+    --shadow-glow-purple: 0 0 20px hsl(280 100% 50% / 0.5), 0 0 40px hsl(280 100% 50% / 0.3);
+    --shadow-glow-cyan: 0 0 20px hsl(185 100% 50% / 0.5), 0 0 40px hsl(185 100% 50% / 0.3);
+
+    /* Sidebar (jika digunakan) */
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 120 100% 50%;
+    --sidebar-primary: 120 100% 50%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 280 100% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 120 100% 30%;
+    --sidebar-ring: 120 100% 50%;
+  }
+
+  /* Dark mode sama dengan light mode untuk tema ini */
+  .dark {
+    --background: 220 20% 8%;
+    --foreground: 120 100% 50%;
+    --card: 220 25% 12%;
+    --card-foreground: 120 100% 50%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 120 100% 50%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 220 20% 8%;
+    --secondary: 280 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 185 100% 50%;
+    --accent-foreground: 220 20% 8%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 120 40% 60%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 120 100% 30%;
+    --input: 220 25% 15%;
+    --ring: 120 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Silkscreen', monospace;
+    image-rendering: pixelated;
+  }
+
+  /* Scrollbar Pixel Style */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--pixel-dark));
+    border: 2px solid hsl(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border: 2px solid hsl(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  /* === PIXEL BORDERS === */
+  .pixel-border {
+    border: 4px solid hsl(var(--border));
+    box-shadow: var(--shadow-pixel);
+  }
+
+  .pixel-border-hover:hover {
+    box-shadow: var(--shadow-pixel-hover);
+    border-color: hsl(var(--accent));
+  }
+
+  /* === GLOW EFFECTS === */
+  .glow-green {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-purple {
+    box-shadow: var(--shadow-glow-purple);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+
+  /* === SCANLINE OVERLAY === */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(0 0% 0% / 0.1) 2px,
+      hsl(0 0% 0% / 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* === CRT EFFECT === */
+  .crt-effect {
+    animation: crt-flicker 0.15s infinite;
+  }
+
+  /* === PIXEL BUTTON === */
+  .pixel-btn {
+    @apply inline-flex items-center justify-center font-bold uppercase tracking-wider;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.75rem;
+    padding: 12px 24px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: 4px solid hsl(var(--border));
+    box-shadow: var(--shadow-pixel);
+    transition: all 0.1s ease;
+    cursor: pointer;
+  }
+
+  .pixel-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px hsl(var(--accent));
+  }
+
+  .pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px hsl(var(--border));
+  }
+
+  .pixel-btn-secondary {
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .pixel-btn-outline {
+    background: transparent;
+    color: hsl(var(--primary));
+  }
+
+  .pixel-btn-outline:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* === PIXEL CARD === */
+  .pixel-card {
+    background: hsl(var(--card));
+    border: 4px solid hsl(var(--border));
+    box-shadow: var(--shadow-pixel);
+    transition: all 0.2s ease;
+  }
+
+  .pixel-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px hsl(var(--accent));
+    border-color: hsl(var(--accent));
+  }
+
+  /* === PROGRESS BAR PIXEL === */
+  .pixel-progress {
+    height: 24px;
+    background: hsl(var(--muted));
+    border: 3px solid hsl(var(--border));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pixel-progress-bar {
+    height: 100%;
+    background: hsl(var(--primary));
+    position: relative;
+  }
+
+  .pixel-progress-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 6px,
+      hsl(var(--primary-foreground) / 0.2) 6px,
+      hsl(var(--primary-foreground) / 0.2) 12px
+    );
+  }
+
+  /* === TYPEWRITER === */
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid hsl(var(--primary));
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+  }
+}
+
+@layer utilities {
+  /* Font Classes */
+  .font-pixel {
+    font-family: 'Press Start 2P', monospace;
+  }
+
+  .font-silkscreen {
+    font-family: 'Silkscreen', monospace;
+  }
+
+  /* Pixel Text Sizes */
+  .text-pixel-xs { font-size: 0.5rem; line-height: 1rem; }
+  .text-pixel-sm { font-size: 0.625rem; line-height: 1.25rem; }
+  .text-pixel-base { font-size: 0.75rem; line-height: 1.5rem; }
+  .text-pixel-lg { font-size: 0.875rem; line-height: 1.75rem; }
+  .text-pixel-xl { font-size: 1rem; line-height: 2rem; }
+  .text-pixel-2xl { font-size: 1.25rem; line-height: 2.5rem; }
+  .text-pixel-3xl { font-size: 1.5rem; line-height: 3rem; }
+}
+
+/* === KEYFRAMES === */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hsl(var(--primary)) }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+@keyframes pixel-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pixel-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--primary) / 0.4);
+  }
+}
+
+@keyframes loading-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}

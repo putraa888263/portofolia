@@ -3,7 +3,7 @@
 // ============================================
 
 export const profileData = {
-  name: "Nama Anda",
+  name: "Ade Putra Azhari",
   title: "Network Engineer",
   subtitle: "Mikrotik Specialist",
   description: "Seorang Network Engineer berpengalaman dengan keahlian khusus dalam jaringan Mikrotik. Passionate dalam membangun infrastruktur jaringan yang handal dan aman.",
